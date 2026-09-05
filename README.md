@@ -47,3 +47,9 @@ python3 scripts/check_notebooks.py
 ```
 
 This check verifies that notebooks parse as JSON and that the removed student identifier does not remain in tracked text files.
+
+With Spark available, run the numeric median regression cases with:
+
+```bash
+make test
+```
