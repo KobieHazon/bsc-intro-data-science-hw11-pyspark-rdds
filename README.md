@@ -26,20 +26,18 @@ My submitted answers:
 - Main Python packages: pandas, pyspark, notebook.
 - Jupyter-compatible local review flow.
 
-## Notes
+## Run
 
-- Full rerun requires a local Spark-compatible Python environment.
+With Docker running:
 
-## Validate
-
-```bash
-python3 scripts/check_notebooks.py
+```sh
+make test
 ```
 
-This check verifies that notebooks parse as JSON and that the removed student identifier does not remain in tracked text files.
+This runs every solution code cell in Spark 3.5.7, then executes 22 numerical cases for median, harmonic mean, and weighted harmonic mean across one- and two-partition RDDs. It also exercises answer export in a temporary directory without overwriting the submitted CSV. The test container has no external network access; building the image requires access to download dependencies.
 
-With Spark available, run the numeric median regression cases with:
+Alternatively, with Spark 3.5.7, NumPy 1.24.4 and pandas 2.0.3 installed locally:
 
-```bash
-make test
+```sh
+spark-submit --master 'local[2]' scripts/run_notebook.py
 ```
